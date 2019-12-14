@@ -2,7 +2,8 @@
 Enter a target url in input box to test landing page
 
 # Demo
-**[URL](https://vishwarajanand.github.io/EnterTargetUrl/)**
+Hosted on Githiub Pages:
+**[https://vishwarajanand.github.io/EnterTargetUrl](https://vishwarajanand.github.io/EnterTargetUrl/)**
 
 # Preview
 ![Preview](https://raw.githubusercontent.com/vishwarajanand/EnterTargetUrl/master/demo.png "Preview")

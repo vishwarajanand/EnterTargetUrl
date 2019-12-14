@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<html>
+
+<body>
+    <h1>Target link tester</h1>
+    <div>
+        <p> Enter target URL here:</p>
+        <p>
+            <input type="text" id="input_targetlink"></input>
+        </p>
+        <p>Click the link below to go to the target URL:
+        </p>
+        <p><a href="#" id="target_clickable">Click Me</a>
+        </p>
+    </div>
+
+    <script>
+        const $source = document.querySelector('#input_targetlink');
+        const $result = document.querySelector('#target_clickable');
+
+        const typeHandler = function(e) {
+            console.log("Target link changed to : " + e.target.value);
+            $result.href = e.target.value;
+        }
+
+        $source.addEventListener('input', typeHandler) // register for oninput
+        $source.addEventListener('propertychange', typeHandler) // for IE8
+    </script>
+</body>
+
+</html>

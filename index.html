@@ -21,16 +21,37 @@
     </div>
 
     <script>
-        const $source = document.querySelector('#input_targetlink');
-        const $result = document.querySelector('#target_clickable');
+        const source = document.querySelector('#input_targetlink');
+        const result = document.querySelector('#target_clickable');
+        // sets the deeplink in URL
+        const base_url = window.location.protocol+'//'+window.location.hostname + ':'+window.location.port+window.location.pathname;
+        // sets the deeplink in URL
+        const add_url_param = function(url_param){
+            console.log("Changing url param");
+            result.href = url_param;
+            window.history.pushState('NewDeeplinkAdded', 'NewDeeplinkAdded', '?deeplink='+url_param);
+        }
+    </script>
 
+    <script>
+        // sets the deeplink from URL in input box
+        var full_url = new URL(window.location.href);
+        var deeplink = full_url.searchParams.get("deeplink");
+        source.value = deeplink;
+    </script>
+
+    <script>
+        // sets the deeplink in href
         const typeHandler = function(e) {
             console.log("Target link changed to : " + e.target.value);
-            $result.href = e.target.value;
+            result.href = e.target.value;
+            add_url_param(e.target.value);
         }
 
-        $source.addEventListener('input', typeHandler) // register for oninput
-        $source.addEventListener('propertychange', typeHandler) // for IE8
+        source.addEventListener('input', typeHandler) // register for oninput
+        source.addEventListener('propertychange', typeHandler) // for IE8
+        // sets the deeplink in the URL
+        
     </script>
 </body>
 

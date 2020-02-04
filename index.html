@@ -26,10 +26,13 @@
         // sets the deeplink in URL
         const base_url = window.location.protocol+'//'+window.location.hostname + ':'+window.location.port+window.location.pathname;
         // sets the deeplink in URL
-        const add_url_param = function(url_param){
-            console.log("Changing url param");
-            result.href = url_param;
-            window.history.pushState('NewDeeplinkAdded', 'NewDeeplinkAdded', '?deeplink='+url_param);
+        const handle_deeplink = function(deeplink){
+            // update click-able link
+            result.href = deeplink;
+
+            //update URL
+            window.history.pushState('NewDeeplinkAdded', 'NewDeeplinkAdded', '?deeplink='+deeplink);
+            console.log("Changed url params");
         }
     </script>
 
@@ -38,19 +41,19 @@
         var full_url = new URL(window.location.href);
         var deeplink = full_url.searchParams.get("deeplink");
         source.value = deeplink;
+        handle_deeplink(deeplink);
+        // result.href = deeplink;
     </script>
 
     <script>
         // sets the deeplink in href
         const typeHandler = function(e) {
             console.log("Target link changed to : " + e.target.value);
-            result.href = e.target.value;
-            add_url_param(e.target.value);
+            handle_deeplink(e.target.value);
         }
 
         source.addEventListener('input', typeHandler) // register for oninput
         source.addEventListener('propertychange', typeHandler) // for IE8
-        // sets the deeplink in the URL
         
     </script>
 </body>
